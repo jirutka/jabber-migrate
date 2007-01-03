@@ -1,6 +1,6 @@
 #!/bin/sh
 
-#mvn compile dependency:copy-dependencies || exit $?
+mvn compile dependency:copy-dependencies || exit $?
 
 cp=target/classes
 for jar in target/dependency/*.jar ; do
