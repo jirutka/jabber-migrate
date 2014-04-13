@@ -1,6 +1,7 @@
 package cz.rdc.devel.jabber.migrate;
 
 public class Main {
+
     static final int MAX_ARGS = 3;
 
     private static void printUsageAndExit(String error) {
@@ -28,11 +29,9 @@ public class Main {
         Command command;
         if ("get".equals(cmd)) {
             command = new RosterGet(IOSupport.createOutput(file));
-        }
-        else if ("put".equals(cmd)) {
+        } else if ("put".equals(cmd)) {
             command = new RosterPut(IOSupport.createInput(file));
-        }
-        else {
+        } else {
             printUsageAndExit("Unknown command '" + cmd + "'");
             return;
         }

@@ -13,6 +13,7 @@ import org.jivesoftware.smack.XMPPConnection;
  * Exports contacts from a roster.
  */
 public class RosterGet implements Command {
+
     private PrintStream out;
 
     public RosterGet(PrintStream out) {
@@ -22,6 +23,7 @@ public class RosterGet implements Command {
     @SuppressWarnings("unchecked")
     public void work(XMPPConnection con) throws Exception {
         Roster roster = con.getRoster();
+
         Iterator<RosterEntry> entries = roster.getEntries();
         while (entries.hasNext()) {
             RosterEntry entry = entries.next();

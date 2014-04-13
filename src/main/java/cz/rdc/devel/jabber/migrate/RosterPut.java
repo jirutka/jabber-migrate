@@ -20,8 +20,8 @@ import org.jivesoftware.smack.XMPPConnection;
  * Puts contacts to a roster.
  */
 public class RosterPut implements Command {
-    private static final Log logger =
-        LogFactory.getLog(RosterPut.class);
+
+    private static final Log LOG = LogFactory.getLog(RosterPut.class);
 
     private BufferedReader in;
 
@@ -42,14 +42,13 @@ public class RosterPut implements Command {
         List<Contact> contacts = parseContacts();
         for (Contact contact : contacts) {
             if (contact.isRemove()) {
-                logger.info("Removing contact: " + contact);
+                LOG.info("Removing contact: " + contact);
                 RosterEntry entry = roster.getEntry(contact.getUser());
                 if (entry != null) {
                     roster.removeEntry(entry);
                 }
-            }
-            else {
-                logger.info("Importing contact: " + contact);
+            } else {
+                LOG.info("Importing contact: " + contact);
                 roster.createEntry(contact.getUser(), contact.getNickname(), contact.getGroups());
             }
         }
@@ -77,7 +76,7 @@ public class RosterPut implements Command {
                 newUsers.remove(entry.getUser());
             }
 
-            logger.info("Waiting for roster update: "
+            LOG.info("Waiting for roster update: "
                     + (contacts.size() - newUsers.size())
                     + "/" + contacts.size());
             Thread.sleep(1000);
@@ -86,6 +85,7 @@ public class RosterPut implements Command {
 
     private List<Contact> parseContacts() throws IOException {
         List<Contact> contacts = new ArrayList<Contact>();
+
         String line;
         while ((line = in.readLine()) != null) {
             String[] parts = Re.deformat("([+-]);([^;]*);([^;]+);\\[([^\\]]*)\\]", line);
