@@ -73,9 +73,9 @@
                         </goals>
                         <configuration>
                             <descriptors>
-                                <descriptor>src/main/descriptors/release-bin.xml</descriptor>
+                                <descriptor>src/main/assembly/release-bin.xml</descriptor>
                             </descriptors>
-                            <finalName>${pom.artifactId}-${pom.version}</finalName>
+                            <finalName>${project.artifactId}-${project.version}</finalName>
                             <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
