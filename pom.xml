@@ -2,7 +2,16 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 
+    <parent>
+        <groupId>cz.jirutka.maven</groupId>
+        <artifactId>root-parent</artifactId>
+        <version>1.1.4</version>
+    </parent>
+
     <modelVersion>4.0.0</modelVersion>
+
+
+    <!--//////////////////// ABOUT ////////////////////-->
 
     <groupId>cz.jirutka.jabber</groupId>
     <artifactId>roster-migrate</artifactId>
@@ -10,6 +19,16 @@
     <version>0.4-SNAPSHOT</version>
 
     <name>roster-migrate</name>
+
+
+    <!--//////////////////// PROPERTIES ////////////////////-->
+
+    <properties>
+        <java.source.version>1.6</java.source.version>
+    </properties>
+
+
+    <!--//////////////////// DEPENDENCIES ////////////////////-->
 
     <dependencies>
         <dependency>
@@ -38,16 +57,11 @@
         </dependency>
     </dependencies>
 
+
+    <!--//////////////////// BUILD ////////////////////-->
+
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.5</source>
-                    <target>1.5</target>
-                </configuration>
-            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
