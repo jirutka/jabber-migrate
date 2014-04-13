@@ -1,11 +1,13 @@
 Jabber Roster Migration
 =======================
 
-This tool allows to migrate from one jabber server to another.
+This tool simplifies migrating of a roster (contact list in XMPP terminology) from one Jabber server (including GTalk!) to another.
 
 
 Usage
 -----
+
+      $ ./bin/roster-migrate.sh MODE <options>
 
       MODE                     : export, or import
       --help                   : Show help
@@ -17,11 +19,11 @@ Usage
 
 Roster export:
 
-    $ ./bin/roster-migrate.sh get get -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
+    $ ./bin/roster-migrate.sh export -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
 
 Roster import:
 
-    $ ./bin/roster-migrate.sh put -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
+    $ ./bin/roster-migrate.sh import -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
 
 
 
@@ -49,4 +51,4 @@ Examples:
 Origin
 ------
 
-This project is fork of http://sourceforge.net/projects/migrate/.
+This project is a fork of http://sourceforge.net/projects/migrate/ by [Ivo Danihelka](https://github.com/fidlej).
