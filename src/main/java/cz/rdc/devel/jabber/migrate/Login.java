@@ -1,5 +1,6 @@
 package cz.rdc.devel.jabber.migrate;
 
+import org.jivesoftware.smack.ConnectionConfiguration;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
@@ -50,8 +51,12 @@ public class Login {
      * Connects to the Jabber server.
      */
     public XMPPConnection connect() throws XMPPException {
-        XMPPConnection con = new XMPPConnection(host, port);
+        ConnectionConfiguration config = new ConnectionConfiguration(host, port);
+
+        XMPPConnection con = new XMPPConnection(config);
+        con.connect();
         con.login(username, password);
+
         return con;
     }
 }
