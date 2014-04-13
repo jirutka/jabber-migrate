@@ -8,7 +8,10 @@ import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Puts contacts to a roster.
@@ -64,9 +67,7 @@ public class RosterPut implements Command {
         }
 
         while (newUsers.size() > 0) {
-            Iterator<RosterEntry> entries = roster.getEntries();
-            while (entries.hasNext()) {
-                RosterEntry entry = entries.next();
+            for (RosterEntry entry : roster.getEntries()) {
                 newUsers.remove(entry.getUser());
             }
 
