@@ -7,6 +7,7 @@ import java.util.List;
  * Contact information holder.
  */
 public class Contact {
+
     private boolean remove;
     private String nickname;
     private String user;

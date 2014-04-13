@@ -3,11 +3,11 @@ package cz.rdc.devel.jabber.migrate;
 import org.jivesoftware.smack.XMPPConnection;
 import org.jivesoftware.smack.XMPPException;
 
-
 /**
  * Stores login information.
  */
 public class Login {
+
     private String username;
     private String password;
     private String host;
@@ -36,13 +36,11 @@ public class Login {
         parts = hostPort.split(":", 2);
         if (parts.length != 2) {
             host = hostPort;
-        }
-        else {
+        } else {
             try {
                 host = parts[0];
                 port = Integer.parseInt(parts[1]);
-            }
-            catch (NumberFormatException e) {
+            } catch (NumberFormatException e) {
                 throw new IllegalArgumentException("Port number is invalid");
             }
         }

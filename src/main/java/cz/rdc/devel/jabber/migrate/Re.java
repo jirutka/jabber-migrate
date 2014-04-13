@@ -3,7 +3,8 @@ package cz.rdc.devel.jabber.migrate;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-class Re {
+abstract class Re {
+
     /**
      * Returns groups.
      * @throws IllegalArgumentException when where is no match

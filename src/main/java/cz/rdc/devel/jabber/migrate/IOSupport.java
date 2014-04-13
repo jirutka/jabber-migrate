@@ -11,9 +11,9 @@ import java.io.Reader;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
-public class IOSupport {
-    private static final Log logger =
-        LogFactory.getLog(IOSupport.class);
+public abstract class IOSupport {
+
+    private static final Log LOG = LogFactory.getLog(IOSupport.class);
 
     /**
      * Returns System.out or file to overwrite.
@@ -31,10 +31,9 @@ public class IOSupport {
     public static BufferedReader createInput(String file) throws FileNotFoundException {
         Reader reader;
         if (file == null) {
-            logger.info("Using system input as input source.");
+            LOG.info("Using system input as input source.");
             reader = new InputStreamReader(System.in);
-        }
-        else {
+        } else {
             reader = new FileReader(file);
         }
         return new BufferedReader(reader);
