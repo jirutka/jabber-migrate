@@ -1,27 +1,21 @@
 package cz.rdc.devel.jabber.migrate;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import org.jivesoftware.smack.Roster;
 import org.jivesoftware.smack.RosterEntry;
 import org.jivesoftware.smack.XMPPConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Puts contacts to a roster.
  */
 public class RosterPut implements Command {
 
-    private static final Log LOG = LogFactory.getLog(RosterPut.class);
+    private static final Logger LOG = LoggerFactory.getLogger(RosterPut.class);
 
     private BufferedReader in;
 
@@ -42,13 +36,13 @@ public class RosterPut implements Command {
         List<Contact> contacts = parseContacts();
         for (Contact contact : contacts) {
             if (contact.isRemove()) {
-                LOG.info("Removing contact: " + contact);
+                LOG.info("Removing contact: {}", contact);
                 RosterEntry entry = roster.getEntry(contact.getUser());
                 if (entry != null) {
                     roster.removeEntry(entry);
                 }
             } else {
-                LOG.info("Importing contact: " + contact);
+                LOG.info("Importing contact: {}", contact);
                 roster.createEntry(contact.getUser(), contact.getNickname(), contact.getGroups());
             }
         }
@@ -76,9 +70,8 @@ public class RosterPut implements Command {
                 newUsers.remove(entry.getUser());
             }
 
-            LOG.info("Waiting for roster update: "
-                    + (contacts.size() - newUsers.size())
-                    + "/" + contacts.size());
+            LOG.info("Waiting for roster update: {}/{}",
+                    contacts.size() - newUsers.size(), contacts.size());
             Thread.sleep(1000);
         }
     }
