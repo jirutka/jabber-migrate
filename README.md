@@ -17,11 +17,11 @@ Usage
 
 Roster export:
 
-    $ ./bin/migrate.sh get get -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
+    $ ./bin/roster-migrate.sh get get -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
 
 Roster import:
 
-    $ ./bin/migrate.sh put -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
+    $ ./bin/roster-migrate.sh put -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
 
 
 
@@ -49,4 +49,4 @@ Examples:
 Origin
 ------
 
-This project is a fork of http://sourceforge.net/projects/migrate/.
+This project is fork of http://sourceforge.net/projects/migrate/.
