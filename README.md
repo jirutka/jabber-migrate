@@ -3,13 +3,25 @@ Jabber Roster Migration
 
 This tool allows to migrate from one jabber server to another.
 
-Usage: migrate command username:password@host[:port] [file]
+
+Usage
+-----
+
+      MODE                     : export, or import
+      --help                   : Show help
+      -f (--file) PATH         : Roster file path (default is stdout/stdin)
+      -h (--host) HOST         : Server address
+      -p (--port) PORT         : Server port (default is 5222)
+      -u (--jid) JID           : Jabber ID
+      -w (--password) PASSWORD : Password
 
 Roster export:
-$ ./bin/migrate.sh get test:pass@jabber.sh.cvut.cz:5222 export.txt
+
+    $ ./bin/migrate.sh get get -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
 
 Roster import:
-$ ./bin/migrate.sh put test2:newpass@jabber.org <export.txt
+
+    $ ./bin/migrate.sh put -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
 
 
 
@@ -17,18 +29,21 @@ Import/export format
 --------------------
 
 The exported format contains one line for every contact.
-Format:
-<isRemove>;<nickname>;<user>;[<groups>]
 
-<isRemove> ... '-' to remove contact, '+' to add contact
-<nickname> ... contact nickname
-<user>     ... contact ID
-<groups>   ... list of groups separated by comma
+Format:
+
+    <isRemove>;<nickname>;<user>;[<groups>]
+
+* isRemove ... `-` to remove contact, `+` to add contact
+* nickname ... contact nickname
+* user     ... contact ID
+* groups   ... comma-separated list of groups
 
 Examples:
-+;Sam;somebody@jabber.cz;[Friends]
--;alien;123@icq;[]
-+;alien;123@icq.netlab.cz;[Sales,Travel]
+
+    +;Sam;somebody@jabber.cz;[Friends]
+    -;alien;123@icq;[]
+    +;alien;123@icq.netlab.cz;[Sales,Travel]
 
 
 Origin
