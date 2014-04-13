@@ -1,19 +1,14 @@
 package cz.rdc.devel.jabber.migrate;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.io.Reader;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import java.io.*;
+
 
 public abstract class IOSupport {
 
-    private static final Log LOG = LogFactory.getLog(IOSupport.class);
+    private static final Logger LOG = LoggerFactory.getLogger(IOSupport.class);
 
     /**
      * Returns System.out or file to overwrite.
