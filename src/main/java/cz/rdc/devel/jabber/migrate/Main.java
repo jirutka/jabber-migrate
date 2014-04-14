@@ -17,16 +17,20 @@ public class Main {
              metaVar="MODE", usage="export, or import")
     private List<String> mode = new ArrayList<String>();
 
-    @Option(name="-u", aliases="--jid", required=true,
-            metaVar="JID", usage="Jabber ID")
-    private String jid;
+    @Option(name="-u", aliases="--username", required=true, metaVar="NAME",
+            usage="Username; usually the portion of JID before at (@) sign, but some severs uses whole JID as an username.")
+    private String username;
+
+    @Option(name="-s", aliases="--service", required=true, metaVar="HOST",
+            usage="Service (domain) name; the portion of JID after at (@) sign.")
+    private String serviceName;
 
     @Option(name="-w", aliases="--password", required=true,
-            metaVar="PASSWORD", usage="Password")
+            metaVar="PASS", usage="Password")
     private String password;
 
-    @Option(name="-h", aliases="--host", required=true,
-            metaVar="HOST", usage="Server address")
+    @Option(name="-h", aliases="--host", metaVar="HOST",
+            usage="Server hostname (default is same as service name)")
     private String host;
 
     @Option(name="-p", aliases="--port",
@@ -74,7 +78,7 @@ public class Main {
             exit(1);
         }
 
-        XMPPConnection conn = XMPPConnectionFactory.connectAndLogin(jid, password, host, port);
+        XMPPConnection conn = XMPPConnectionFactory.connectAndLogin(username, serviceName, password, host, port);
         command.work(conn);
     }
 

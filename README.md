@@ -7,23 +7,26 @@ This tool simplifies migrating of a roster (contact list in XMPP terminology) fr
 Usage
 -----
 
-      $ ./bin/roster-migrate.sh MODE <options>
+    $ ./bin/roster-migrate.sh MODE <options>
 
-      MODE                     : export, or import
-      --help                   : Show help
-      -f (--file) PATH         : Roster file path (default is stdout/stdin)
-      -h (--host) HOST         : Server address
-      -p (--port) PORT         : Server port (default is 5222)
-      -u (--jid) JID           : Jabber ID
-      -w (--password) PASSWORD : Password
+     MODE                 : export, or import
+     --help               : Show help
+     -f (--file) PATH     : Roster file path (default is stdout/stdin)
+     -h (--host) HOST     : Server hostname (default is same as service name)
+     -p (--port) PORT     : Server port (default is 5222)
+     -s (--service) HOST  : Service (domain) name; the portion of JID after at (@)
+                            sign.
+     -u (--username) NAME : Username; usually the portion of JID before at (@)
+                            sign, but some severs uses whole JID as an username.
+     -w (--password) PASS : Password
 
 Roster export:
 
-    $ ./bin/roster-migrate.sh export -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 -f export.txt
+    $ ./bin/roster-migrate.sh export -u kevin@flynn.com -s flynn.com -w top-secret -h talk.google.com -f export.txt
 
 Roster import:
 
-    $ ./bin/roster-migrate.sh import -u kevin@flynn.com -w top-secret -h talk.google.com -p 5222 < export.txt
+    $ ./bin/roster-migrate.sh import -u flynn -s jabbim.cz -w top-secret < export.txt
 
 
 
