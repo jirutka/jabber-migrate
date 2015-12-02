@@ -7,7 +7,7 @@ This tool simplifies migrating of a roster (contact list in XMPP terminology) fr
 Usage
 -----
 
-    $ ./bin/roster-migrate.sh MODE <options>
+    $ ./bin/roster-migrate MODE <options>
 
      MODE                 : export, or import
      --help               : Show help
@@ -22,11 +22,11 @@ Usage
 
 Roster export:
 
-    $ ./bin/roster-migrate.sh export -u kevin@flynn.com -s flynn.com -w top-secret -h talk.google.com -f export.txt
+    $ ./bin/roster-migrate export -u kevin@flynn.com -s flynn.com -w top-secret -h talk.google.com -f export.txt
 
 Roster import:
 
-    $ ./bin/roster-migrate.sh import -u flynn -s jabbim.cz -w top-secret < export.txt
+    $ ./bin/roster-migrate import -u flynn -s jabbim.cz -w top-secret < export.txt
 
 
 
