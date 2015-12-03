@@ -13,7 +13,4 @@ done
 
 $JAVA -classpath "$JAVA_HOME/lib/ext/*:$cp" cz.rdc.devel.jabber.migrate.Main "$@"
 
-if [ $? != 0 ]; then
-    echo ""
-    echo "JAVA_HOME=$JAVA_HOME"
-fi
+[ $? -eq 0 ] || echo -e "\nJAVA_HOME=$JAVA_HOME"
