@@ -4,6 +4,15 @@ Jabber Roster Migration
 This tool simplifies migrating of a roster (contact list in XMPP terminology) from one Jabber server (including GTalk!) to another.
 
 
+How to get it
+-------------
+
+You can download an archive with compiled code, all JAR dependencies and `roster-migrate` script from the [releases page](https://github.com/jirutka/jabber-migrate/releases/), or build it yourself using Maven.
+
+The only runtime requirement is Java 1.6+.
+If you want to use `roster-migrate` shell script, then you’ll also need some POSIX-compatible shell.
+
+
 Usage
 -----
 
